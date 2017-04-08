@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Liste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+    <style media="screen">
+      body{
+        margin-bottom: 60px;
+      }
+      h1{
+        text-align: center;
+      }
+      form.list{
+        padding-top: 10px;
+      }
+      input.list, a.list{
+        margin-bottom: 10px;
+      }
+      form.list:hover{
+        background-color: #BDBDBD;
+      }
+      form.add{
+        background-color: #E0E0E0;
+        position: fixed;
+        bottom: 0;
+        height: 60px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      input.user{
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>CRUD</h1>
+
+    <!-- form to show users -->
+    {% for user in users %}
+    <form action="http://127.0.0.1:5000/update/{{ user['id'] }}" method="post" id="user_{{ user['id'] }}" class="list">
+      <div class="row">
+        <div class="small-12 medium-3 columns"><input type="text" name="pseudo" value="{{ user['pseudo'] }}" class="list"></div>
+        <div class="small-12 medium-3 columns"><input type="text" name="nom" value="{{ user['nom'] }}" class="list"></div>
+        <div class="small-12 medium-3 columns"><input type="text" name="prenom" value="{{ user['prenom'] }}" class="list"></div>
+        <div class="small-8 medium-2 columns"><input type="submit" class="button expanded list" value="Update"></div>
+        <div class="small-4 medium-1 columns"><a class="button alert expanded list" href="/delete/{{ user['id'] }}">Delete</a></div>
+      </div>
+    </form>
+    {% endfor %}
+
+    <!-- form to add user -->
+    <form action="http://127.0.0.1:5000/add" method="post" class="add">
+      <div class="row">
+        <div class="small-3 columns"><input type="text" class="user" name="pseudo" placeholder="Pseudo"></div>
+        <div class="small-3 columns"><input type="text" class="user" name="nom" placeholder="Nom"></div>
+        <div class="small-3 columns"><input type="text" class="user" name="prenom" placeholder="Prénom"></div>
+        <div class="small-3 columns"><input type="submit" class="button secondary expanded user" value="Add user"></div>
+      </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
+  </body>
+</html>
