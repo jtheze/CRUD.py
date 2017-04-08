@@ -1,7 +1,5 @@
-# CRUD.py
-_A naive implementation of CRUD in Python_
-
-____
+CRUD.py
+====
 
 For this project, you need Python 3.5+ (often delivered with your distribution)
 and the [Flask framework](http://flask.pocoo.org/) that you can install with pip :
